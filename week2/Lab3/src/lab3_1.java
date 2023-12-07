@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 public class lab3_1 {
     public static void main(String[] args) {
         byte varByte;
@@ -15,13 +17,9 @@ public class lab3_1 {
         varFloat = 120e10F + 234e10F;
         varDouble = 120e10 + 234e10;
         varChar = 'A';
-        System.out.println("Value byte : " + varByte);
-        System.out.println("Value short : "+ varShort);
-        System.out.println("Value int : " + varInt);
-        System.out.println("Value long : " + varLong);
-        System.out.println("Value float : " + varFloat);
-        System.out.println("Value double : " + varDouble);
-        System.out.print("Value char : " + varChar);
-        System.out.println(", Value ascii : " + (byte)varChar);
+        JOptionPane.showMessageDialog(null, 
+        "Value byte : " + varByte + "\nValue short : " + varShort + "\nValue int : " + varInt + "\nValue long : " + varLong + "\nValue float : " + varFloat + "\nValue double : " + varDouble +
+        "\nValue char : " + varChar + "\nValue ascii : " + (byte)varChar, 
+        "Result", 1);
     }
 }

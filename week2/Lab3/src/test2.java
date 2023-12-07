@@ -1,19 +1,19 @@
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class test2 {
     public static void main(String[] args) {
         float money, rate;
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Enter the amount of money: ");
-        money = scan.nextFloat();
-        System.out.print("Enter the interest rate: ");
-        rate = scan.nextFloat();
+        String message_1;
+
+        money = Float.parseFloat(JOptionPane.showInputDialog("Enter the amount of money: "));
+
+        rate = Float.parseFloat(JOptionPane.showInputDialog("Enter the interest rate: "));
         for (int i = 1; i <= 5; i++) {
             money += money * rate / 100;
-            System.out.print("Year " + i + " Money : ");
-            System.out.printf("%.2f",money);
-            System.out.println();
+            message_1 += "Year " + i + " Money : " + money + "\n";
+
         }
-        scan.close();
+        JOptionPane.showMessageDialog(null, ""+ message_1 +"", "Result", 1);
+
     }
 }

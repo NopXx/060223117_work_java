@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 public class lab3_5 {
     public static void main(String[] args) {
         final double PI = 3.1416;
@@ -9,6 +11,6 @@ public class lab3_5 {
         result = (type == '1') ? (width * height) : (PI * radius * radius);
 
         message = (type == '1') ? "Rectangle" : "Circle";
-        System.out.println("Calculate Area " + message + " = " + result);
+        JOptionPane.showMessageDialog(null, "Calculate Area " + message + " = " + result, "Result", 1);
     }
 }
