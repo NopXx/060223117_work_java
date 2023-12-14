@@ -11,7 +11,6 @@ public class lab4_2 {
         boolean done = true;
         // ประกาศตัวแปร done ชนิด boolean
         String message = "";
-        do {
         // ประกาศตัวแปร message ชนิด String
         num1 = Integer.parseInt(JOptionPane.showInputDialog("Enter first value :"));
         // รับค่าจากคำสั่ง JOptionPane.showInputDialog แล้วแปลงค่าเป็น int จากคำสั่ง Integer.parseInt แล้วเก็บไว้ในตัวแปร num1
@@ -75,6 +74,5 @@ public class lab4_2 {
             JOptionPane.showMessageDialog(null, "Invalid operator");
             // แสดงผล Invalid operator โดยใช้คำสั่ง JOptionPane.showMessageDialog
         }
-    } while (done);
     }
 }
