@@ -14,8 +14,8 @@ public class lab5_4 {
 
     // start, end, i = i + input
     public static int Sumation(int n) {
-        if (n < 5) {
-            return (n + Sumation(n + 1));
+        if (n > 1) {
+            return (n + Sumation(n - 2));
         } else return 1;
     }
 }
