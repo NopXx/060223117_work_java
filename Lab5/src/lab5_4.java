@@ -12,9 +12,10 @@ public class lab5_4 {
         System.exit(0);
     }
 
+    // start, end, i = i + input
     public static int Sumation(int n) {
-        if (n > 1) {
-            return (n + Sumation(n - 1));
+        if (n < 5) {
+            return (n + Sumation(n + 1));
         } else return 1;
     }
 }
