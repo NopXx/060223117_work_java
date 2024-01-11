@@ -46,6 +46,7 @@ public class test2 {
         // ถ้า start น้อยกว่าหรือเท่ากับ end ให้เข้ามาทำเงื่อนไข
             return start + Sumation(start + step, end, step);
             // เรียกใช้ method Sumation และส่งพารามิเตอร์ start + step, end, step เมื่อได้ค่ากลับมาแล้วให้เอามาบวกกับ start แล้วส่งค่ากลับ
+            // -_- -_-
         } else return 0;
         // ถ้าไม่ ให้ส่งค่า 0 กลับ
     }
