@@ -15,17 +15,17 @@ public class rate {
                 output += "Rate 0 - 100000 = 0 \n";
             }
             if (salary[i] > 100000) {
-                rate5 = (100000) * 0.05;
+                rate5 =  (100000) * 0.05;
                 total_rate += rate5;
                 output += "Rate 100001 - 500000 =  " + number.format(rate5) + "\n";
             }
             if (salary[i] > 500000) {
-                rate10 = (500000) * 0.1;
+                rate10 = (400000) * 0.1;
                 total_rate += rate10;
                 output += "Rate 500001 - 1000000 =  " + number.format(rate10) + "\n";
             }
             if (salary[i] > 1000000) {
-                rate15 = (1000000) * 0.15;
+                rate15 = (3000000) * 0.15;
                 total_rate += rate15;
                 output += "Rate 1000001 - 4000000 =  " + number.format(rate15) + "\n";
             }
