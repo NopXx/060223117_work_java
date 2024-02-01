@@ -9,7 +9,7 @@ public class lab6_5 {
         JFrame window = new JFrame("Employee Data");
         JTextArea textArea1 = new JTextArea(10, 30);
         JTextArea textArea2 = new JTextArea(10, 10);
-        String data[][] = new String[10][2];
+        String data[][] = new String[5][2];
         Container c = window.getContentPane();
         c.setLayout(new FlowLayout());
         textArea1.setEditable(false);
