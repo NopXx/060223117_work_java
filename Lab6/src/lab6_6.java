@@ -1,107 +1,43 @@
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
 
 // import javafx.scene.text.Font;
 
 public class lab6_6 {
+    
+    private static JPanel panel = new JPanel();
+    private static java.awt.Font newfont = new Font("Tamaho", Font.BOLD, 16);
+
+
     public static void main(String[] args) {
         JFrame window = new JFrame(" Student Score ");
-        
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); 
         JScrollPane scrollPane = new JScrollPane(panel);
-        panel.setBorder(new EmptyBorder(10, 10, 10, 10));
-        // panel.add(pane);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); 
+
         // class 0 - 10
         // homework 0 - 15
         // assignment 0 - 10
         // subtest 0 -5
         // mid 0 - 30
         // end 0 - 30
-        java.awt.Font newfont = new Font("Tamaho", Font.BOLD, 16);
+
         int student = 5;
         student = Integer.parseInt(JOptionPane.showInputDialog("Enter student number : "));
         int data[][] = new int[student][8];
-        JTextArea textArea[][] = new JTextArea[student][8];
-        JLabel label[][] = new JLabel[student][8];
+        JTextArea textArea = new JTextArea();
+        JLabel label = new JLabel();
+
         // create GUI
         Container c = window.getContentPane();
-        
 
-        for (int r = 0; r < label.length; r++) {
-            System.out.println("r = " + r);
-            for (int cu = 0; cu < label[r].length; cu++) {
-                switch (cu) {
-                    case 0:
-                        label[r][cu] = new JLabel("Class Score ");
-                        textArea[r][cu] = new JTextArea(1, 20);
-                        textArea[r][cu].setEditable(false);
-                        textArea[r][cu].setFont(newfont);
-                        break;
-                    case 1:
-                        label[r][cu] = new JLabel("Homework Score ");
-                        textArea[r][cu] = new JTextArea(1, 20);
-                        textArea[r][cu].setEditable(false);
-                        textArea[r][cu].setFont(newfont);
-                        break;
-                    case 2:
-                        label[r][cu] = new JLabel("Assignment Score ");
-                        textArea[r][cu] = new JTextArea(1, 20);
-                        textArea[r][cu].setEditable(false);
-                        textArea[r][cu].setFont(newfont);
-                        break;
-                    case 3:
-                        label[r][cu] = new JLabel("Subtest Score ");
-                        textArea[r][cu] = new JTextArea(1, 20);
-                        textArea[r][cu].setEditable(false);
-                        textArea[r][cu].setFont(newfont);
-                        break;
-                    case 4:
-                        label[r][cu] = new JLabel("Midterm Score ");
-                        textArea[r][cu] = new JTextArea(1, 20);
-                        textArea[r][cu].setEditable(false);
-                        textArea[r][cu].setFont(newfont);
-                        break;
-                    case 5:
-                        label[r][cu] = new JLabel("Final Score");
-                        textArea[r][cu] = new JTextArea(1, 20);
-                        textArea[r][cu].setEditable(false);
-                        textArea[r][cu].setFont(newfont);
-                        break;
-                    case 6:
-                        label[r][cu] = new JLabel("Total Score");
-                        textArea[r][cu] = new JTextArea(1, 22);
-                        textArea[r][cu].setEditable(false);
-                        textArea[r][cu].setFont(newfont);
-                        break;
-                    case 7:
-                        label[r][cu] = new JLabel("Grade");
-                        textArea[r][cu] = new JTextArea(1, 20);
-                        textArea[r][cu].setEditable(false);
-                        textArea[r][cu].setFont(newfont);
-                        break;
-                    default:
-                        break;
-                }
-
-                label[r][cu].setFont(newfont);
-                // label[r].setHorizontalAlignment(SwingConstants.LEFT);
-                panel.add(label[r][cu]);
-                panel.add(textArea[r][cu]);
-            }
-        }
-
+        getData(data);
+        displayData(data, textArea, label);
         c.add(scrollPane);
         // c.add(panel);
         window.setSize(450, 500);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
-        // window.show();
-
-        getData(data);
-        displayData(data, textArea);
+        window.setLocationRelativeTo(null);
         // System.exit(0);
     }
 
@@ -147,18 +83,59 @@ public class lab6_6 {
         }
     }
 
-    public static void displayData(int data[][], JTextArea text[][]) {
-        // boolean done = true;
-        // String numStr;
+    public static void displayData(int data[][], JTextArea textArea, JLabel label) {
+        
         for (int r = 0; r < data.length; r++) {
+            JLabel label0 = new JLabel("\n---------------------------------------------");
+            panel.add(label0);
+            JLabel label1 = new JLabel("\nStudent " + (r + 1));
+            panel.add(label1);
+            JLabel label2 = new JLabel("\n---------------------------------------------");
+            panel.add(label2);
 
-            for (int c = 0; c < data[r].length; c++) {
-                if (c == 7)
-                    text[r][c].setText(calGrade(data[r][c-1]) + "");
-                else
-                    text[r][c].setText(data[r][c] + "");
-                // System.out.println(data[r][c]);
+            for (int cu = 0; cu < data[r].length; cu++) {
+                if (cu != 7) {
+                    label = new JLabel(getLabelName(cu));
+                    textArea = new JTextArea(1, 20);
+                    textArea.setEditable(false);
+                    textArea.setFont(newfont);
+                    textArea.setText(data[r][cu] + "");
+                } else {
+                    label = new JLabel(getLabelName(cu));
+                    textArea = new JTextArea(1, 20);
+                    textArea.setEditable(false);
+                    textArea.setFont(newfont);
+                    textArea.setText(calGrade(data[r][cu - 1]) + "");
+                }
+                
+                panel.add(label, BorderLayout.WEST);
+                panel.add(textArea, BorderLayout.EAST);
+
             }
+        }
+
+    }
+
+    private static String getLabelName(int index) {
+        switch (index) {
+            case 0:
+                return "Class Score - 10";
+            case 1:
+                return "Homework Score - 15";
+            case 2:
+                return "Assignment Score - 10";
+            case 3:
+                return "Subtest Score - 5";
+            case 4:
+                return "Midterm Score - 30";
+            case 5:
+                return "Final Score - 30";
+            case 6:
+                return "Total Score - 100";
+            case 7:
+                return "Grade";
+            default:
+                return "";
         }
     }
 
@@ -169,24 +146,31 @@ public class lab6_6 {
 
     public static String calGrade(int score) {
         if ((score >= 0) && (score <= 100)) {
-            // ถ้า score มีค่ามากกว่าหรือเท่ากับ 0 และ score มีค่าน้อยกว่าหรือเท่ากับ 100 จะเข้ามาทำงาน
-            // ประกาศตัวแปร grade ชนิด String
-            if (score >= 80) return "A";
-            // ถ้า score มีค่ามากกว่าหรือเท่ากับ 80 ตัวแปร grade จะมีค่าเท่ากับ A
-            else if (score >= 75) return "B+";
-            // ถ้า score มีค่ามากกว่าหรือเท่ากับ 75 ตัวแปร grade จะมีค่าเท่ากับ B+
-            else if (score >= 70) return "B";
-            // ถ้า score มีค่ามากกว่าหรือเท่ากับ 70 ตัวแปร grade จะมีค่าเท่ากับ B
-            else if (score >= 65) return "C+";
-            // ถ้า score มีค่ามากกว่าหรือเท่ากับ 65 ตัวแปร grade จะมีค่าเท่ากับ C+
-            else if (score >= 60) return "C";
-            // ถ้า score มีค่ามากกว่าหรือเท่ากับ 60 ตัวแปร grade จะมีค่าเท่ากับ C
-            else if (score >= 55) return "D+";
-            // ถ้า score มีค่ามากกว่าหรือเท่ากับ 55 ตัวแปร grade จะมีค่าเท่ากับ D+
-            else if (score >= 50) return "D";
-            // ถ้า score มีค่ามากกว่าหรือเท่ากับ 50 ตัวแปร grade จะมีค่าเท่ากับ D
-            else return "F";
+
+            if (score >= 80)
+                return "A";
+
+            else if (score >= 75)
+                return "B+";
+
+            else if (score >= 70)
+                return "B";
+
+            else if (score >= 65)
+                return "C+";
+
+            else if (score >= 60)
+                return "C";
+
+            else if (score >= 55)
+                return "D+";
+
+            else if (score >= 50)
+                return "D";
+
+            else
+                return "F";
+        }
+        return "error";
     }
-    return "error";
-}
 }
