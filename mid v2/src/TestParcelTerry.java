@@ -3,13 +3,15 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class TestParcelTerry {
-    
+
     public static void main(String[] args) {
         ParcelTerry p = new ParcelTerry();
         JLabel label;
-        JButton checkBtn, submitBtn;
+        JButton submitBtn;
         JTextField textField_type, textField_weight;
-        
+        JTextArea textArea;
+        textArea = new JTextArea(2, 25);
+
         JFrame frame = new JFrame("Parcel Terry");
         Container c = new Container();
 
@@ -29,30 +31,25 @@ public class TestParcelTerry {
         textField_weight = new JTextField(25);
         c.add(textField_weight);
 
-        checkBtn = new JButton("Check Input");
-        c.add(checkBtn);
-        checkBtn.addActionListener(new ActionListener() {
-            
-            public void actionPerformed(ActionEvent e) {
-                if (textField_type.getText().length() < 0 && textField_weight.getText().length() < 0) {
-                    JOptionPane.showMessageDialog(null, "Please enter value", "" ,0);
-                } else {
-                    // submitBtn.setEnabled(true);
-                }
-            }
-        });
-
         submitBtn = new JButton("Submit");
         // submitBtn.setEnabled(false);
         c.add(submitBtn);
 
         submitBtn.addActionListener(new ActionListener() {
-            JTextArea textArea;
+            
+
+            
             public void actionPerformed(ActionEvent e) {
-                p.Settypeservice(Integer.parseInt(textField_type.getText()));
-                p.Setweight(Integer.parseInt(textField_weight.getText()));
-                textArea.setText(String.valueOf(p.ParcelCalator(p.Gettypeservice(0), p.Getweight())));
-                
+                if (textField_type.getText().isEmpty() || textField_weight.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Please enter value", "", 0);
+                } else {
+                    // submitBtn.setEnabled(true);
+                    p.Settypeservice(Integer.parseInt(textField_type.getText()));
+                    p.Setweight(Integer.parseInt(textField_weight.getText()));
+                    textArea.setText(String.valueOf(p.ParcelCalator(p.Gettypeservice(0), p.Getweight())));
+                    c.add(textArea);
+                }
+
             }
         });
 
