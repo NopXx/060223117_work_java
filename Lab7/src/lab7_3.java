@@ -157,12 +157,16 @@ public class lab7_3 implements ActionListener {
             numberField.setText(str);
         } else if (event.getSource() == btnDot) {
             if (dotCount == 0) {
-                
-                if (str.length() < 1 || c_operator != ""){
+                System.out.println("str length = " + str.length());
+                if (str.length() <= 0) {
                     str += "0.";
                     numberField.setText(str);
                     dotCount++;
-                } else if (str.length() > 0 ) {
+                } else if (c_operator != "" && !((str.charAt(str.length() - 1) >= '0') && (str.charAt(str.length() - 1) <= '9'))) {
+                    str += "0.";
+                    numberField.setText(str);
+                    dotCount++;
+                } else if ((str.charAt(str.length() - 1) >= '0') && (str.charAt(str.length() - 1) <= '9')) {
                     str += ".";
                     numberField.setText(str);
                     dotCount++;
@@ -303,56 +307,55 @@ public class lab7_3 implements ActionListener {
 
         } else if (event.getSource() == btnRoot) {
             if (!operator && str.length() > 0) {
-                number.root(Double.parseDouble(str));
-                numberField.setText(number.toString());
-                // if (str.charAt(str.length() - 1) == '.'
-                //         || ((str.charAt(str.length() - 1) >= '0') && (str.charAt(str.length() - 1) <= '9'))) {
-                //     str += "^";
-                //     numberField.setText(str);
-                // } else {
-                //     if (str.charAt(str.length() - 1) == 'd')
-                //         str = str.substring(0, str.length() - 3);
-                //     else
-                //         str = str.substring(0, str.length() - 1);
 
-                //     str += "^";
-                //     numberField.setText(str);
-                // }
-                // c_operator = "^";
-                // dotCount = 0;
+                if (str.charAt(str.length() - 1) == '.'
+                        || ((str.charAt(str.length() - 1) >= '0') && (str.charAt(str.length() - 1) <= '9'))) {
+                    number.root(Double.parseDouble(str));
+                    numberField.setText(number.toString());
+                } else {
+                    if (str.charAt(str.length() - 1) == 'd') {
+                        str = str.substring(0, str.length() - 3);
+                        number.root(Double.parseDouble(str));
+                        numberField.setText(number.toString());
+                    } else {
+                        str = str.substring(0, str.length() - 1);
+                        number.root(Double.parseDouble(str));
+                        numberField.setText(number.toString());
+                    }
+                }
+                dotCount = 1;
             }
-
         } else if (event.getSource() == btnEqual) {
             if (c_operator != "") {
                 String arr[] = new String[2];
-                String delimiter = c_operator == "+" ? "\\+" : c_operator == "*" ? "\\*" : c_operator == "^" ? "\\^" : c_operator;
+                String delimiter = c_operator == "+" ? "\\+"
+                        : c_operator == "*" ? "\\*" : c_operator == "^" ? "\\^" : c_operator;
                 arr = str.split(delimiter);
-                
-                if (c_operator == "+") {
-                    number.setValue(Double.parseDouble(arr[0]));
-                    number.add(Double.parseDouble(arr[1]));
-                    numberField.setText(number.toString());
-                } else if (c_operator == "-") {
-                    number.setValue(Double.parseDouble(arr[0]));
-                    number.subtract(Double.parseDouble(arr[1]));
-                    numberField.setText(number.toString());
-                } else if (c_operator == "*") {
-                    number.setValue(Double.parseDouble(arr[0]));
-                    number.multiply(Double.parseDouble(arr[1]));
-                    numberField.setText(number.toString());
-                } else if (c_operator == "/") {
-                    number.setValue(Double.parseDouble(arr[0]));
-                    number.divide(Double.parseDouble(arr[1]));
-                    numberField.setText(number.toString());
-                } else if (c_operator == "mod") {
-                    number.setValue(Double.parseDouble(arr[0]));
-                    number.modulus(Double.parseDouble(arr[1]));
-                    numberField.setText(number.toString());
-                } else if (c_operator == "^") {
-                    number.setValue(Double.parseDouble(arr[0]));
-                    number.PowNumber(Double.parseDouble(arr[1]));
-                    numberField.setText(number.toString());
+
+                number.setValue(Double.parseDouble(arr[0]));
+
+                switch (c_operator) {
+                    case "+":
+                        number.add(Double.parseDouble(arr[1]));
+                        break;
+                    case "-":
+                        number.subtract(Double.parseDouble(arr[1]));
+                        break;
+                    case "*":
+                        number.multiply(Double.parseDouble(arr[1]));
+                        break;
+                    case "/":
+                        number.divide(Double.parseDouble(arr[1]));
+                        break;
+                    case "mod":
+                        number.modulus(Double.parseDouble(arr[1]));
+                        break;
+                    case "^":
+                        number.PowNumber(Double.parseDouble(arr[1]));
+                        break;
                 }
+
+                numberField.setText(number.toString());
             }
             c_operator = "";
 
