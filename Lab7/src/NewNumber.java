@@ -1,47 +1,47 @@
 public class NewNumber {
-    private int number;
+    private double number;
 
-    public NewNumber(int n) {
+    public NewNumber(double n) {
         setValue(n);
     }
 
-    public void setValue(int n) {
+    public void setValue(double n) {
         number = n;
     }
 
-    public int getValue() {
+    public double getValue() {
         return (number);
     }
 
     public String toString() {
-        return (Integer.toString(getValue()));
+        return (Double.toString(getValue()));
     }
 
-    public void add(int n) {
+    public void add(double n) {
         setValue(getValue() + n);
     }
 
-    public void subtract(int n) {
+    public void subtract(double n) {
         setValue(getValue() - n);
     }
 
-    public void multiply(int n) {
+    public void multiply(double n) {
         setValue(getValue() * n);
     }
 
-    public void divide(int n) {
+    public void divide(double n) {
         setValue(getValue() / n);
     }
 
-    public void PowNumber(int n) {
-        setValue((int) Math.pow(getValue(), n));
+    public void PowNumber(double n) {
+        setValue((double) Math.pow(getValue(), n));
     }
 
-    public void modulus(int n) {
+    public void modulus(double n) {
         setValue(getValue() % n);
     }
 
-    public void root(int n) {
-        
+    public void root(double n) {
+        setValue(Math.sqrt(n));
     }
 }
