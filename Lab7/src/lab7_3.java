@@ -21,8 +21,9 @@ public class lab7_3 implements ActionListener {
         // create numberLabel and attach it to content pane
         numberLabel = new JLabel("");
         container.add(numberLabel);
-        numberField = new JTextField(20);
+        numberField = new JTextField(15);
         numberField.setHorizontalAlignment(JTextField.RIGHT);
+        numberField.setFont(new Font("Arial", Font.BOLD, 16));
         numberField.setEditable(false);
         // numberField.setEditable( false );
         container.add(numberField);
