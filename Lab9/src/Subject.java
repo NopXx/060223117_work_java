@@ -42,7 +42,7 @@ public class Subject {
 
     public String toString() {
         String str = "";
-        str = getSubjectCode() + " " + getSubjectName() + " ";
+        str = getSubjectCode() + "\t" + getSubjectName() + " ";
         str += getSubjectCredit();
         return (str);
     }

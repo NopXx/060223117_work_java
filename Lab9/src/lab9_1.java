@@ -45,19 +45,23 @@ public lab9_1() {
     }
 
     public void initSubject() {
-        sub = new Subject[5];
-        subjectStr = new String[5];
+        sub = new Subject[10];
+        subjectStr = new String[10];
         sub[0] = new Subject("662305", "IT Laboratory II", 1);
         sub[1] = new Subject("662309", "Data Structure", 3);
         sub[2] = new Subject("662310", "Database System", 3);
         sub[3] = new Subject("662317", "Data Communication", 3);
         sub[4] = new Subject("662327",
                 "Advanced Computer Programming", 3);
-        subjectStr[0] = sub[0].toString();
-        subjectStr[1] = sub[1].toString();
-        subjectStr[2] = sub[2].toString();
-        subjectStr[3] = sub[3].toString();
-        subjectStr[4] = sub[4].toString();
+        sub[5] = new Subject("060223115", "SYSTEM ANALYSIS & DESIGN", 3);
+        sub[6] = new Subject("060223117", "OBJECT-ORIENTED PROGRAM LAB", 1);
+        sub[7] = new Subject("060223132", "OBJECT-ORIENTED PROGRAM", 2);
+        sub[8] = new Subject("060223135", "COMP ARCHITECTURE & ORGAN", 3);
+        sub[9] = new Subject("060223123", "DATABASE SYSTEM", 3);
+
+        for (int i = 0; i < sub.length; i++) {
+            subjectStr[i] = sub[i].toString();
+        }
     }
 
     public void initGui() {
@@ -83,7 +87,7 @@ public lab9_1() {
         addsubBtn.setEnabled(false);
         addsubBtn.addActionListener(this);
         container.add(addsubBtn);
-        subTextArea = new JTextArea(5, 50);
+        subTextArea = new JTextArea(10, 50);
         subTextArea.setEditable(false);
         subScroll = new JScrollPane(subTextArea);
         container.add(subScroll);
@@ -95,7 +99,7 @@ public lab9_1() {
         cancleBtn.setEnabled(false);
         cancleBtn.addActionListener(this);
         container.add(cancleBtn);
-        setSize(450, 250);
+        setSize(600, 350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
