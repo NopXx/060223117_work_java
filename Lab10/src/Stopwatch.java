@@ -47,9 +47,6 @@ public class Stopwatch extends JFrame {
             }
         };
         areaStopwatch.setPreferredSize(new Dimension(320, 260));
-        areaStopwatch.setBorder(BorderFactory.createLineBorder(
-
-                Color.RED, 3));
 
         areaStopwatch.add(new JLabel(
                 "                                                Stopwatch                                                "));
