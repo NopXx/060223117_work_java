@@ -4,6 +4,7 @@ public class lend_accessory {
     private String accessoryName;
     private int lend_number;
     private String lend_date;
+    private int lend_sId;
 
     public lend_accessory() {}
 
@@ -22,6 +23,9 @@ public class lend_accessory {
     public void setLendDate(String date) {
         lend_date = date;
     }
+    public void setLendSId(int sId) {
+        lend_sId = sId;
+    }
     public String getUserName() {
         return username;
     }
@@ -37,7 +41,10 @@ public class lend_accessory {
     public String getLendDate() {
         return lend_date;
     }
+    public int getLendSId() {
+        return lend_sId;
+    }
     public String toString() {
-        return "Username: " + username + ", " + accessoryName + ", " + accessoryId + ", " + lend_number + ", " + lend_date;
+        return "Username: " + username + ", " + accessoryName + ", " + accessoryId + ", " + lend_number + ", " + lend_date + ", " + lend_sId;
     }
 }

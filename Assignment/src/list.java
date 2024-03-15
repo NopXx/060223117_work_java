@@ -2,7 +2,8 @@ public class list {
     private int listId;
     private int accessoryId;
     private String Username;
-    private int staffId;
+    private int lend_sId;
+    private int return_sId;
 
     public list() {}
 
@@ -15,8 +16,8 @@ public class list {
     public void setUsername(String Username) {
         this.Username = Username;
     }
-    public void setStaffId(int staffId) {
-        this.staffId = staffId;
+    public void setLendSId(int sId) {
+        lend_sId = sId;
     }
     public int getListId() {
         return listId;
@@ -27,15 +28,22 @@ public class list {
     public String getUsername() {
         return Username;
     }
-    public int getStaffId() {
-        return staffId;
+    public int getLendSId() {
+        return lend_sId;
+    }
+    public int getReturn_sId() {
+        return return_sId;
+    }
+    public void setReturn_sId(int return_sId) {
+        this.return_sId = return_sId;
     }
     public String toString() {
         String str = "";
         str += "List Id: " + listId + "\n";
         str += "Accessory Id: " + accessoryId + "\n";
         str += "Username: " + Username + "\n";
-        str += "Staff Id: " + staffId + "\n";
+        str += "Lend Staff Id: " + lend_sId + "\n";
+        str += "Return Staff Id: " + return_sId + "\n";
         return str;
     }
 }

@@ -4,6 +4,7 @@ public class return_accessory {
     private String accessoryName;
     private int return_number;
     private String return_date;
+    private int return_sId;
     private double fine;
     private String accessoryStatus;
 
@@ -52,7 +53,13 @@ public class return_accessory {
     public String getAccessoryStatus() {
         return accessoryStatus;
     }
+    public int getReturn_sId() {
+        return return_sId;
+    }
+    public void setReturn_sId(int return_sId) {
+        this.return_sId = return_sId;
+    }
     public String toString() {
-        return Username + " " + accessoryId + " " + accessoryName + " " + return_number + " " + return_date + " " + fine + " " + accessoryStatus;
+        return "Username : " + Username + ", AccessoryId : " + accessoryId + ", AccessoryName : " + accessoryName + ", ReturnNumber : " + return_number + ", ReturnDate : " + return_date + ", RuturnSId : " + return_sId + ", Fine : " + fine + ", AccessoryStatus : " + accessoryStatus;
     }
 }
